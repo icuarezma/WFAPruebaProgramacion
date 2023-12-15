@@ -45,6 +45,7 @@
             txtPhone = new TextBox();
             checkFormEnabled = new CheckBox();
             lblWarning = new Label();
+            tabPageProducts = new TabPage();
             tabControl1.SuspendLayout();
             tabPageUserManagement.SuspendLayout();
             panel2.SuspendLayout();
@@ -58,6 +59,7 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPageUserManagement);
+            tabControl1.Controls.Add(tabPageProducts);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
@@ -69,6 +71,7 @@
             // 
             tabPageUserManagement.Controls.Add(panel2);
             tabPageUserManagement.Controls.Add(panel1);
+            tabPageUserManagement.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabPageUserManagement.ImageKey = "(none)";
             tabPageUserManagement.Location = new Point(4, 24);
             tabPageUserManagement.Name = "tabPageUserManagement";
@@ -270,6 +273,17 @@
             lblWarning.Text = "label1";
             lblWarning.Visible = false;
             // 
+            // tabPageProducts
+            // 
+            tabPageProducts.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tabPageProducts.Location = new Point(4, 24);
+            tabPageProducts.Name = "tabPageProducts";
+            tabPageProducts.Padding = new Padding(3);
+            tabPageProducts.Size = new Size(839, 471);
+            tabPageProducts.TabIndex = 1;
+            tabPageProducts.Text = "Productos";
+            tabPageProducts.UseVisualStyleBackColor = true;
+            // 
             // FMainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -312,5 +326,6 @@
         private TextBox txtEmail;
         private TextBox txtPhone;
         private Label lblWarning;
+        private TabPage tabPageProducts;
     }
 }

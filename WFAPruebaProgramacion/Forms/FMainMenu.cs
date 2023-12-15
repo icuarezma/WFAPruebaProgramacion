@@ -37,7 +37,6 @@ namespace WFAPruebaProgramacion.Forms
         private void checkFormEnabled_CheckedChanged(object sender, EventArgs e)
         {
             enableField(checkFormEnabled.Checked);
-
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -62,6 +61,26 @@ namespace WFAPruebaProgramacion.Forms
                     return;
                 }
             }
+
+            string email = txtEmail.Text;
+            string phone = txtPhone.Text;
+
+            if (!IsFormatEmail(email))
+            {
+                lblWarning.Text = "El formato del correo electrónico dígitado es inválido. Formato correcto ejemplo: juanperez@gmail.com";
+                txtEmail.Focus();
+                lblWarning.Visible = true;
+                return;
+            }
+
+            if (!IsFormatPhone(phone))
+            {
+                lblWarning.Text = "El formato del número telefónico dígitado es inválido. Formato correcto ejemplo: 8520-5689";
+                txtPhone.Focus();
+                lblWarning.Visible = true;
+                return;
+            }
+
             _context.Usuarios.Add(new Usuario
             {
                 Usuario1 = txtUsername.Text,
@@ -80,14 +99,31 @@ namespace WFAPruebaProgramacion.Forms
                 MessageBox.Show("Registro guardado correctamente!", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgUsers.DataSource = _context.Usuarios.ToList();
                 dgUsers.Refresh();
+
+                foreach (var field in fields)
+                {
+                    field.Key.Text = "";
+                }
+                checkFormEnabled.Checked = false;
+
             }
             else
             {
                 MessageBox.Show("Ha ocurrido un error al registrar. Contactese con el Administraro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
-
-
+        private bool IsFormatEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(email);
+        }
+        private bool IsFormatPhone(string phone)
+        {
+            string pattern = @"^\d{4}-\d{4}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(phone);
         }
 
         private void enableField(bool enable)
