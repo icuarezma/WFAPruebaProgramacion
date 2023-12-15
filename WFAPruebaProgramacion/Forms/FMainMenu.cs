@@ -1,16 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Data;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using WFAPruebaProgramacion.Models;
 
 namespace WFAPruebaProgramacion.Forms
@@ -18,20 +7,19 @@ namespace WFAPruebaProgramacion.Forms
     public partial class FMainMenu : Form
     {
         private AMPMContext _context;
+        private BindingSource bindingSource;
+        private DataTable dataTable;
 
         public FMainMenu(AMPMContext context)
         {
             InitializeComponent();
             _context = context;
-        }
-        private void FMainMenu_Load(object sender, EventArgs e)
-        {
             dgUsers.DataSource = _context.Usuarios.ToList();
-        }
+            fillDataTableFromContext();
 
-        private void formPane_Paint(object sender, PaintEventArgs e)
-        {
-
+            //bindingSource = new BindingSource();
+            //bindingSource.DataSource = listProducts;
+            //dgvProducts.DataSource = bindingSource;
         }
 
         private void checkFormEnabled_CheckedChanged(object sender, EventArgs e)
@@ -145,5 +133,69 @@ namespace WFAPruebaProgramacion.Forms
             }
         }
 
+        private void fillDataTableFromContext()
+        {
+            var listProducts = _context.Productos.ToList().Select(
+                                        p => new
+                                        {
+                                            p.Codigo,
+                                            p.Nombre,
+                                            p.Existencia,
+                                            Estado = (bool)p.Estado ? "Activo" : "Inactivo",
+                                            p.Proveedor,
+                                            p.Imagen
+                                        }).ToList();
+
+            dataTable = new DataTable("MyTable");
+            dataTable.Columns.Add("Codigo", typeof(string));
+            dataTable.Columns.Add("Nombre", typeof(string));
+            dataTable.Columns.Add("Existencia", typeof(int));
+            dataTable.Columns.Add("Estado", typeof(string));
+            dataTable.Columns.Add("Proveedor", typeof(string));
+            dataTable.Columns.Add("Imagen", typeof(Image));
+
+            foreach (var product in listProducts)
+            {
+                DataRow row = dataTable.NewRow();
+                row["Codigo"] = product.Codigo;
+                row["Nombre"] = product.Nombre;
+                row["Existencia"] = product.Existencia;
+                row["Estado"] = product.Estado;
+                row["Proveedor"] = product.Proveedor;
+                row["Imagen"] = product.Imagen; 
+
+                dataTable.Rows.Add(row);
+            }
+            bindingSource = new BindingSource();
+            bindingSource.DataSource = dataTable;
+            dgvProducts.DataSource = bindingSource;
+
+
+        }
+
+        private void txtFilterByName_TextChanged(object sender, EventArgs e)
+        {
+            bindingSource.Filter = $"Nombre LIKE '%{txtFilterByName.Text}%'";
+        }
+
+        private void checkStateFilterByName_CheckedChanged(object sender, EventArgs e)
+        {
+            txtFilterByName.Enabled = checkStateFilterByName.Checked;
+        }
+
+        private void rbActives_CheckedChanged(object sender, EventArgs e)
+        {
+            bindingSource.Filter = $"Estado = 'Activo'";
+        }
+
+        private void rbInactives_CheckedChanged(object sender, EventArgs e)
+        {
+            bindingSource.Filter = $"Estado = 'Inactivo'";
+        }
+
+        private void rbAllByState_CheckedChanged(object sender, EventArgs e)
+        {
+            bindingSource.RemoveFilter();
+        }
     }
 }

@@ -28,7 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl1 = new TabControl();
+            tabControlMain = new TabControl();
+            tabPageProducts = new TabPage();
+            paneMainCenterProductos = new Panel();
+            panel5 = new Panel();
+            dgvProducts = new DataGridView();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel4 = new Panel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            groupBox1 = new GroupBox();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            checkStateFilterByName = new CheckBox();
+            txtFilterByName = new TextBox();
+            groupBox2 = new GroupBox();
+            flowLayoutPanel3 = new FlowLayoutPanel();
+            rbActives = new RadioButton();
+            rbInactives = new RadioButton();
+            rbAllByState = new RadioButton();
             tabPageUserManagement = new TabPage();
             panel2 = new Panel();
             panel3 = new Panel();
@@ -45,8 +61,17 @@
             txtPhone = new TextBox();
             checkFormEnabled = new CheckBox();
             lblWarning = new Label();
-            tabPageProducts = new TabPage();
-            tabControl1.SuspendLayout();
+            tabControlMain.SuspendLayout();
+            tabPageProducts.SuspendLayout();
+            paneMainCenterProductos.SuspendLayout();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
+            panel4.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            groupBox1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            groupBox2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
             tabPageUserManagement.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -56,16 +81,195 @@
             formMainPane.SuspendLayout();
             SuspendLayout();
             // 
-            // tabControl1
+            // tabControlMain
             // 
-            tabControl1.Controls.Add(tabPageUserManagement);
-            tabControl1.Controls.Add(tabPageProducts);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(847, 499);
-            tabControl1.TabIndex = 0;
+            tabControlMain.Controls.Add(tabPageProducts);
+            tabControlMain.Controls.Add(tabPageUserManagement);
+            tabControlMain.Dock = DockStyle.Fill;
+            tabControlMain.Location = new Point(0, 0);
+            tabControlMain.Name = "tabControlMain";
+            tabControlMain.SelectedIndex = 0;
+            tabControlMain.Size = new Size(847, 499);
+            tabControlMain.TabIndex = 0;
+            // 
+            // tabPageProducts
+            // 
+            tabPageProducts.Controls.Add(paneMainCenterProductos);
+            tabPageProducts.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tabPageProducts.Location = new Point(4, 24);
+            tabPageProducts.Name = "tabPageProducts";
+            tabPageProducts.Padding = new Padding(3);
+            tabPageProducts.Size = new Size(839, 471);
+            tabPageProducts.TabIndex = 1;
+            tabPageProducts.Text = "Productos";
+            tabPageProducts.UseVisualStyleBackColor = true;
+            // 
+            // paneMainCenterProductos
+            // 
+            paneMainCenterProductos.Controls.Add(panel5);
+            paneMainCenterProductos.Controls.Add(flowLayoutPanel1);
+            paneMainCenterProductos.Controls.Add(panel4);
+            paneMainCenterProductos.Dock = DockStyle.Fill;
+            paneMainCenterProductos.Location = new Point(3, 3);
+            paneMainCenterProductos.Name = "paneMainCenterProductos";
+            paneMainCenterProductos.Size = new Size(833, 465);
+            paneMainCenterProductos.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(dgvProducts);
+            panel5.Dock = DockStyle.Fill;
+            panel5.Location = new Point(0, 94);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(833, 271);
+            panel5.TabIndex = 3;
+            // 
+            // dgvProducts
+            // 
+            dgvProducts.AllowUserToAddRows = false;
+            dgvProducts.AllowUserToDeleteRows = false;
+            dgvProducts.AllowUserToResizeColumns = false;
+            dgvProducts.AllowUserToResizeRows = false;
+            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProducts.Dock = DockStyle.Fill;
+            dgvProducts.Location = new Point(0, 0);
+            dgvProducts.Name = "dgvProducts";
+            dgvProducts.ReadOnly = true;
+            dgvProducts.Size = new Size(833, 271);
+            dgvProducts.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Dock = DockStyle.Bottom;
+            flowLayoutPanel1.Location = new Point(0, 365);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(833, 100);
+            flowLayoutPanel1.TabIndex = 2;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(tableLayoutPanel1);
+            panel4.Dock = DockStyle.Top;
+            panel4.Location = new Point(0, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(833, 94);
+            panel4.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(groupBox1, 0, 0);
+            tableLayoutPanel1.Controls.Add(groupBox2, 1, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(833, 94);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(flowLayoutPanel2);
+            groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Location = new Point(3, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(410, 88);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Buscar por Nombre";
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(checkStateFilterByName);
+            flowLayoutPanel2.Controls.Add(txtFilterByName);
+            flowLayoutPanel2.Dock = DockStyle.Fill;
+            flowLayoutPanel2.Location = new Point(3, 25);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(404, 60);
+            flowLayoutPanel2.TabIndex = 0;
+            // 
+            // checkStateFilterByName
+            // 
+            checkStateFilterByName.Anchor = AnchorStyles.Left;
+            checkStateFilterByName.AutoSize = true;
+            checkStateFilterByName.Location = new Point(3, 10);
+            checkStateFilterByName.Name = "checkStateFilterByName";
+            checkStateFilterByName.Size = new Size(15, 14);
+            checkStateFilterByName.TabIndex = 1;
+            checkStateFilterByName.UseVisualStyleBackColor = true;
+            checkStateFilterByName.CheckedChanged += checkStateFilterByName_CheckedChanged;
+            // 
+            // txtFilterByName
+            // 
+            txtFilterByName.Anchor = AnchorStyles.None;
+            txtFilterByName.Enabled = false;
+            txtFilterByName.Location = new Point(24, 3);
+            txtFilterByName.Name = "txtFilterByName";
+            txtFilterByName.PlaceholderText = "Buscar";
+            txtFilterByName.Size = new Size(200, 29);
+            txtFilterByName.TabIndex = 0;
+            txtFilterByName.TextChanged += txtFilterByName_TextChanged;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(flowLayoutPanel3);
+            groupBox2.Dock = DockStyle.Fill;
+            groupBox2.Location = new Point(419, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(411, 88);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Filtrar por Estado";
+            // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.Controls.Add(rbActives);
+            flowLayoutPanel3.Controls.Add(rbInactives);
+            flowLayoutPanel3.Controls.Add(rbAllByState);
+            flowLayoutPanel3.Dock = DockStyle.Fill;
+            flowLayoutPanel3.Location = new Point(3, 25);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(405, 60);
+            flowLayoutPanel3.TabIndex = 0;
+            // 
+            // rbActives
+            // 
+            rbActives.AutoSize = true;
+            rbActives.Location = new Point(3, 3);
+            rbActives.Name = "rbActives";
+            rbActives.Size = new Size(82, 25);
+            rbActives.TabIndex = 0;
+            rbActives.Text = "Activos";
+            rbActives.UseVisualStyleBackColor = true;
+            rbActives.CheckedChanged += rbActives_CheckedChanged;
+            // 
+            // rbInactives
+            // 
+            rbInactives.AutoSize = true;
+            rbInactives.Location = new Point(91, 3);
+            rbInactives.Name = "rbInactives";
+            rbInactives.Size = new Size(93, 25);
+            rbInactives.TabIndex = 1;
+            rbInactives.Text = "Inactivos";
+            rbInactives.UseVisualStyleBackColor = true;
+            rbInactives.CheckedChanged += rbInactives_CheckedChanged;
+            // 
+            // rbAllByState
+            // 
+            rbAllByState.AutoSize = true;
+            rbAllByState.Checked = true;
+            rbAllByState.Location = new Point(190, 3);
+            rbAllByState.Name = "rbAllByState";
+            rbAllByState.Size = new Size(72, 25);
+            rbAllByState.TabIndex = 2;
+            rbAllByState.TabStop = true;
+            rbAllByState.Text = "Todos";
+            rbAllByState.UseVisualStyleBackColor = true;
+            rbAllByState.CheckedChanged += rbAllByState_CheckedChanged;
             // 
             // tabPageUserManagement
             // 
@@ -273,29 +477,29 @@
             lblWarning.Text = "label1";
             lblWarning.Visible = false;
             // 
-            // tabPageProducts
-            // 
-            tabPageProducts.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabPageProducts.Location = new Point(4, 24);
-            tabPageProducts.Name = "tabPageProducts";
-            tabPageProducts.Padding = new Padding(3);
-            tabPageProducts.Size = new Size(839, 471);
-            tabPageProducts.TabIndex = 1;
-            tabPageProducts.Text = "Productos";
-            tabPageProducts.UseVisualStyleBackColor = true;
-            // 
             // FMainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(847, 499);
-            Controls.Add(tabControl1);
+            Controls.Add(tabControlMain);
             MaximizeBox = false;
             Name = "FMainMenu";
             Text = "Menú Principal";
             WindowState = FormWindowState.Maximized;
-            Load += FMainMenu_Load;
-            tabControl1.ResumeLayout(false);
+            tabControlMain.ResumeLayout(false);
+            tabPageProducts.ResumeLayout(false);
+            paneMainCenterProductos.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
+            panel4.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
             tabPageUserManagement.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -309,7 +513,7 @@
 
         #endregion
 
-        private TabControl tabControl1;
+        private TabControl tabControlMain;
         private TabPage tabPageUserManagement;
         private Panel panel2;
         private Panel panel1;
@@ -327,5 +531,20 @@
         private TextBox txtPhone;
         private Label lblWarning;
         private TabPage tabPageProducts;
+        private Panel paneMainCenterProductos;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel panel4;
+        private Panel panel5;
+        private DataGridView dgvProducts;
+        private TableLayoutPanel tableLayoutPanel1;
+        private GroupBox groupBox1;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private TextBox txtFilterByName;
+        private GroupBox groupBox2;
+        private CheckBox checkStateFilterByName;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private RadioButton rbActives;
+        private RadioButton rbInactives;
+        private RadioButton rbAllByState;
     }
 }
