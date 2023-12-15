@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using WFAPruebaProgramacion.Models;
 
 namespace WFAPruebaProgramacion.Forms
@@ -138,6 +139,7 @@ namespace WFAPruebaProgramacion.Forms
             var listProducts = _context.Productos.ToList().Select(
                                         p => new
                                         {
+                                            p.Id,
                                             p.Codigo,
                                             p.Nombre,
                                             p.Existencia,
@@ -147,22 +149,23 @@ namespace WFAPruebaProgramacion.Forms
                                         }).ToList();
 
             dataTable = new DataTable("MyTable");
+            dataTable.Columns.Add("Id", typeof(int));
             dataTable.Columns.Add("Codigo", typeof(string));
             dataTable.Columns.Add("Nombre", typeof(string));
             dataTable.Columns.Add("Existencia", typeof(int));
             dataTable.Columns.Add("Estado", typeof(string));
             dataTable.Columns.Add("Proveedor", typeof(string));
-            dataTable.Columns.Add("Imagen", typeof(Image));
+            //dataTable.Columns.Add("Imagen", typeof(Image));
 
             foreach (var product in listProducts)
             {
                 DataRow row = dataTable.NewRow();
+                row["Id"] = product.Id;
                 row["Codigo"] = product.Codigo;
                 row["Nombre"] = product.Nombre;
                 row["Existencia"] = product.Existencia;
                 row["Estado"] = product.Estado;
                 row["Proveedor"] = product.Proveedor;
-                row["Imagen"] = product.Imagen; 
 
                 dataTable.Rows.Add(row);
             }
@@ -196,6 +199,47 @@ namespace WFAPruebaProgramacion.Forms
         private void rbAllByState_CheckedChanged(object sender, EventArgs e)
         {
             bindingSource.RemoveFilter();
+        }
+
+        private void dgvProducts_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvProducts.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvProducts.SelectedRows[0];
+
+                int id = Convert.ToInt32(selectedRow.Cells["Id"].Value.ToString());
+
+                Producto pro = _context.Productos.Find(id);
+
+                if (pro != null)
+                {
+                    byte[] imagenBytes = pro.Imagen;
+                    if (imagenBytes != null && imagenBytes.Length > 0)
+                    {
+                        try {
+                            using (MemoryStream ms = new MemoryStream(imagenBytes))
+                            {
+                                Image imagen = Image.FromStream(ms);
+                                pbImage.Image = imagen;
+                            }
+                        } catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error al cargar la imagen: {ex.Message}");
+                            pbImage.Image = null;
+                        }
+                        
+                    }
+                    else
+                    {
+                        pbImage.Image = null;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Producto no encontrado");
+                }
+
+            }
         }
     }
 }

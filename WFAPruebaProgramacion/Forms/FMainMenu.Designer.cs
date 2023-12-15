@@ -30,10 +30,13 @@
         {
             tabControlMain = new TabControl();
             tabPageProducts = new TabPage();
+            panel6 = new Panel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            groupBox3 = new GroupBox();
+            pbImage = new PictureBox();
             paneMainCenterProductos = new Panel();
             panel5 = new Panel();
             dgvProducts = new DataGridView();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             panel4 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             groupBox1 = new GroupBox();
@@ -63,6 +66,10 @@
             lblWarning = new Label();
             tabControlMain.SuspendLayout();
             tabPageProducts.SuspendLayout();
+            panel6.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbImage).BeginInit();
             paneMainCenterProductos.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
@@ -94,6 +101,7 @@
             // 
             // tabPageProducts
             // 
+            tabPageProducts.Controls.Add(panel6);
             tabPageProducts.Controls.Add(paneMainCenterProductos);
             tabPageProducts.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabPageProducts.Location = new Point(4, 24);
@@ -104,10 +112,53 @@
             tabPageProducts.Text = "Productos";
             tabPageProducts.UseVisualStyleBackColor = true;
             // 
+            // panel6
+            // 
+            panel6.Controls.Add(tableLayoutPanel2);
+            panel6.Dock = DockStyle.Bottom;
+            panel6.Location = new Point(3, 192);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(833, 276);
+            panel6.TabIndex = 2;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(groupBox3, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(833, 276);
+            tableLayoutPanel2.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(pbImage);
+            groupBox3.Dock = DockStyle.Fill;
+            groupBox3.Location = new Point(3, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(410, 270);
+            groupBox3.TabIndex = 0;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Imagen";
+            // 
+            // pbImage
+            // 
+            pbImage.Dock = DockStyle.Fill;
+            pbImage.Location = new Point(3, 25);
+            pbImage.Name = "pbImage";
+            pbImage.Size = new Size(404, 242);
+            pbImage.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbImage.TabIndex = 0;
+            pbImage.TabStop = false;
+            // 
             // paneMainCenterProductos
             // 
             paneMainCenterProductos.Controls.Add(panel5);
-            paneMainCenterProductos.Controls.Add(flowLayoutPanel1);
             paneMainCenterProductos.Controls.Add(panel4);
             paneMainCenterProductos.Dock = DockStyle.Fill;
             paneMainCenterProductos.Location = new Point(3, 3);
@@ -121,7 +172,7 @@
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(0, 94);
             panel5.Name = "panel5";
-            panel5.Size = new Size(833, 271);
+            panel5.Size = new Size(833, 371);
             panel5.TabIndex = 3;
             // 
             // dgvProducts
@@ -136,16 +187,9 @@
             dgvProducts.Location = new Point(0, 0);
             dgvProducts.Name = "dgvProducts";
             dgvProducts.ReadOnly = true;
-            dgvProducts.Size = new Size(833, 271);
+            dgvProducts.Size = new Size(833, 260);
             dgvProducts.TabIndex = 0;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Dock = DockStyle.Bottom;
-            flowLayoutPanel1.Location = new Point(0, 365);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(833, 100);
-            flowLayoutPanel1.TabIndex = 2;
+            dgvProducts.CellMouseClick += dgvProducts_CellMouseClick;
             // 
             // panel4
             // 
@@ -481,14 +525,19 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(847, 499);
             Controls.Add(tabControlMain);
-            MaximizeBox = false;
             Name = "FMainMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Menú Principal";
             WindowState = FormWindowState.Maximized;
             tabControlMain.ResumeLayout(false);
             tabPageProducts.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbImage).EndInit();
             paneMainCenterProductos.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
@@ -532,7 +581,6 @@
         private Label lblWarning;
         private TabPage tabPageProducts;
         private Panel paneMainCenterProductos;
-        private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel4;
         private Panel panel5;
         private DataGridView dgvProducts;
@@ -546,5 +594,9 @@
         private RadioButton rbActives;
         private RadioButton rbInactives;
         private RadioButton rbAllByState;
+        private Panel panel6;
+        private TableLayoutPanel tableLayoutPanel2;
+        private GroupBox groupBox3;
+        private PictureBox pbImage;
     }
 }
