@@ -34,6 +34,9 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             groupBox3 = new GroupBox();
             pbImage = new PictureBox();
+            groupBox4 = new GroupBox();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            dataGridOptions = new DataGridView();
             paneMainCenterProductos = new Panel();
             panel5 = new Panel();
             dgvProducts = new DataGridView();
@@ -70,6 +73,9 @@
             tableLayoutPanel2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbImage).BeginInit();
+            groupBox4.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridOptions).BeginInit();
             paneMainCenterProductos.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
@@ -127,6 +133,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Controls.Add(groupBox3, 0, 0);
+            tableLayoutPanel2.Controls.Add(groupBox4, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -155,6 +162,44 @@
             pbImage.SizeMode = PictureBoxSizeMode.CenterImage;
             pbImage.TabIndex = 0;
             pbImage.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(tableLayoutPanel3);
+            groupBox4.Dock = DockStyle.Fill;
+            groupBox4.Location = new Point(419, 3);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(411, 270);
+            groupBox4.TabIndex = 1;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Opciones";
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(dataGridOptions, 0, 1);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(3, 25);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 18.5950413F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 81.40496F));
+            tableLayoutPanel3.Size = new Size(405, 242);
+            tableLayoutPanel3.TabIndex = 0;
+            // 
+            // dataGridOptions
+            // 
+            dataGridOptions.AllowUserToAddRows = false;
+            dataGridOptions.AllowUserToDeleteRows = false;
+            dataGridOptions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridOptions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridOptions.Dock = DockStyle.Fill;
+            dataGridOptions.Location = new Point(3, 48);
+            dataGridOptions.Name = "dataGridOptions";
+            dataGridOptions.ReadOnly = true;
+            dataGridOptions.Size = new Size(399, 191);
+            dataGridOptions.TabIndex = 0;
             // 
             // paneMainCenterProductos
             // 
@@ -187,7 +232,7 @@
             dgvProducts.Location = new Point(0, 0);
             dgvProducts.Name = "dgvProducts";
             dgvProducts.ReadOnly = true;
-            dgvProducts.Size = new Size(833, 260);
+            dgvProducts.Size = new Size(833, 371);
             dgvProducts.TabIndex = 0;
             dgvProducts.CellMouseClick += dgvProducts_CellMouseClick;
             // 
@@ -538,6 +583,9 @@
             tableLayoutPanel2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbImage).EndInit();
+            groupBox4.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridOptions).EndInit();
             paneMainCenterProductos.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
@@ -598,5 +646,8 @@
         private TableLayoutPanel tableLayoutPanel2;
         private GroupBox groupBox3;
         private PictureBox pbImage;
+        private GroupBox groupBox4;
+        private TableLayoutPanel tableLayoutPanel3;
+        private DataGridView dataGridOptions;
     }
 }

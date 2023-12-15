@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Numerics;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WFAPruebaProgramacion.Models;
@@ -155,7 +156,8 @@ namespace WFAPruebaProgramacion.Forms
             dataTable.Columns.Add("Existencia", typeof(int));
             dataTable.Columns.Add("Estado", typeof(string));
             dataTable.Columns.Add("Proveedor", typeof(string));
-            //dataTable.Columns.Add("Imagen", typeof(Image));
+            
+            
 
             foreach (var product in listProducts)
             {
@@ -210,6 +212,8 @@ namespace WFAPruebaProgramacion.Forms
                 int id = Convert.ToInt32(selectedRow.Cells["Id"].Value.ToString());
 
                 Producto pro = _context.Productos.Find(id);
+                fillDataOptions(id);
+
 
                 if (pro != null)
                 {
@@ -239,7 +243,24 @@ namespace WFAPruebaProgramacion.Forms
                     MessageBox.Show("Producto no encontrado");
                 }
 
+
+
+
+
             }
+        }
+    
+        private void fillDataOptions (int id)
+        {
+            
+            dataGridOptions.DataSource = _context.Opciones.Where(o => o.Idproducto == id).ToList().Select(
+                    lo => new
+                    {
+                        lo.Id,
+                        lo.Nombre,
+                        Estado = (bool)lo.Estado ? "Activo" : "Inactivo"
+                    }
+                ).ToList(); ;
         }
     }
 }
