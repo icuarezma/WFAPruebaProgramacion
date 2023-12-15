@@ -37,6 +37,7 @@
             groupBox4 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             dataGridOptions = new DataGridView();
+            btnAddOptions = new Button();
             paneMainCenterProductos = new Panel();
             panel5 = new Panel();
             dgvProducts = new DataGridView();
@@ -179,6 +180,7 @@
             tableLayoutPanel3.ColumnCount = 1;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Controls.Add(dataGridOptions, 0, 1);
+            tableLayoutPanel3.Controls.Add(btnAddOptions, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(3, 25);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -200,6 +202,17 @@
             dataGridOptions.ReadOnly = true;
             dataGridOptions.Size = new Size(399, 191);
             dataGridOptions.TabIndex = 0;
+            // 
+            // btnAddOptions
+            // 
+            btnAddOptions.Enabled = false;
+            btnAddOptions.Location = new Point(3, 3);
+            btnAddOptions.Name = "btnAddOptions";
+            btnAddOptions.Size = new Size(172, 39);
+            btnAddOptions.TabIndex = 1;
+            btnAddOptions.Text = "Agregar opciones";
+            btnAddOptions.UseVisualStyleBackColor = true;
+            btnAddOptions.Click += btnAddOptions_Click;
             // 
             // paneMainCenterProductos
             // 
@@ -649,5 +662,6 @@
         private GroupBox groupBox4;
         private TableLayoutPanel tableLayoutPanel3;
         private DataGridView dataGridOptions;
+        private Button btnAddOptions;
     }
 }

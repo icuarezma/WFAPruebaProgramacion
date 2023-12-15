@@ -156,8 +156,8 @@ namespace WFAPruebaProgramacion.Forms
             dataTable.Columns.Add("Existencia", typeof(int));
             dataTable.Columns.Add("Estado", typeof(string));
             dataTable.Columns.Add("Proveedor", typeof(string));
-            
-            
+
+
 
             foreach (var product in listProducts)
             {
@@ -211,6 +211,8 @@ namespace WFAPruebaProgramacion.Forms
 
                 int id = Convert.ToInt32(selectedRow.Cells["Id"].Value.ToString());
 
+                btnAddOptions.Enabled = true;
+
                 Producto pro = _context.Productos.Find(id);
                 fillDataOptions(id);
 
@@ -220,18 +222,20 @@ namespace WFAPruebaProgramacion.Forms
                     byte[] imagenBytes = pro.Imagen;
                     if (imagenBytes != null && imagenBytes.Length > 0)
                     {
-                        try {
+                        try
+                        {
                             using (MemoryStream ms = new MemoryStream(imagenBytes))
                             {
                                 Image imagen = Image.FromStream(ms);
                                 pbImage.Image = imagen;
                             }
-                        } catch (Exception ex)
+                        }
+                        catch (Exception ex)
                         {
                             MessageBox.Show($"Error al cargar la imagen: {ex.Message}");
                             pbImage.Image = null;
                         }
-                        
+
                     }
                     else
                     {
@@ -249,10 +253,10 @@ namespace WFAPruebaProgramacion.Forms
 
             }
         }
-    
-        private void fillDataOptions (int id)
+
+        private void fillDataOptions(int id)
         {
-            
+
             dataGridOptions.DataSource = _context.Opciones.Where(o => o.Idproducto == id).ToList().Select(
                     lo => new
                     {
@@ -261,6 +265,31 @@ namespace WFAPruebaProgramacion.Forms
                         Estado = (bool)lo.Estado ? "Activo" : "Inactivo"
                     }
                 ).ToList(); ;
+        }
+
+        private void btnAddOptions_Click(object sender, EventArgs e)
+        {
+
+
+            if (dgvProducts.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvProducts.SelectedRows[0];
+                int id = Convert.ToInt32(selectedRow.Cells["Id"].Value.ToString());
+
+                FormAddOptions fao = new FormAddOptions(id,_context);
+                DialogResult result = fao.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    fillDataOptions(id);
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionra un producto en la tabla","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                
         }
     }
 }
