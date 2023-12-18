@@ -7,3 +7,5 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     Cambiar ICUAREZMA-IDEAP\\SQLEXPRESS por el nombre de instancia de su servidor
 
 2. Restaurar el archivo AMPM.bak
+
+3. Una vez levantada la aplicación autenticarse con usuario01/Demo123
